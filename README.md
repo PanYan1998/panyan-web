@@ -9,8 +9,8 @@ Hello my love
 3. 在mysql中建立数据库schema.sql
 4. 运行 main.py
 
-我没有做有关邮箱的配置，先省略吧，以后再做
-User要细化成student、manager、admin三种类，还没做
+我没有做有关邮箱的配置，先省略吧，以后再说。
+User要细化成student、manager、admin三种类，还没做。
 
 
 小目标：让学生可以写留言，和论坛发布文章一样，只需显示content不用title，不用评论。
