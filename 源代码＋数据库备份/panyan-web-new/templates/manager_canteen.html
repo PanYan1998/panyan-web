@@ -1,0 +1,107 @@
+$def with (managername, email, page_bulletins, page_foods)
+
+
+<div class="py-5" action="" method="post" enctype="multipart/form-data">
+    <div class="container">
+      <div class="row h-75">
+        <div class="col-3">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item"> <a href="" class="active nav-link" data-toggle="pill" data-target="#tabone">个人信息</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">管理公告</a> </li>
+            <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree">管理菜品</a> </li>
+          </ul>
+        </div>
+        <div class="col-9">
+          <div class="tab-content">
+
+            <div class="tab-pane fade show active" id="tabone" role="tabpanel">
+              <form id="c_form-h" class="" >
+
+                
+                <div class="form-group row"> <label for="inputmailh" class="col-2 col-form-label">E-mail</label>
+                  <div class="col-10">
+                    <input type="email" class="form-control" id="inputmailh" name="email" value="$email" disabled> </div>
+                </div>
+                <div class="form-group row"> <label for="inputpasswordh" class="col-2 col-form-label">Password</label>
+                  <div class="col-10">
+                    <input type="password" class="form-control" id="inputpasswordh" placeholder="Password"> </div>
+                </div>
+                
+              </form>
+            </div>
+
+
+            <div class="tab-pane fade" id="tabtwo" role="tabpanel">
+                <div class="row">
+                  <div class="col-md-12"><a class="btn btn-primary" href="/addbulletin" id="new_post">＋公告</a></div>
+                </div>
+              
+              <div class="py-5">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card" >
+                    <div class="card-header"> 当前公告 </div>
+                    <div class="card-body">
+                      $for p in page_bulletins:
+                      <div class="list-group">
+                        <div class="d-flex w-100 justify-content-between">
+                          <small>$p['bulletin_time']</small>
+                        </div>
+                        <p class="mb-1">$p['content']</p>
+                        <div class="row">
+                          <div class="col-md-12"><a class="btn btn-primary" href="/del_b/$p['id']" id="new_post">删除</a></div>
+                        </div>
+
+                    </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              </div> 
+            </div>
+
+
+
+            <div class="tab-pane fade" id="tabthree" role="tabpanel">
+              <div class="row">
+                  <div class="col-md-12"><a class="btn btn-primary" href="/addFood" id="new_post">＋菜品</a></div>
+                </div>
+              
+              <div class="py-5">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card" >
+                    <div class="card-header"> 当前菜品 </div>
+                    <div class="card-body">
+                      $for f in page_foods:
+                      <div class="list-group">
+                        <div class="d-flex w-100 justify-content-between">
+                          <small>$f['time']</small>
+                        </div>
+                        <p class="mb-1">$f['name']</p>
+                        <div class="row">
+                          <div class="col-md-6"><a class="btn btn-primary" href="/del/$f['id']" id="new_post">删除</a></div>
+                          <div class="col-md-6"><a class="btn btn-primary" href="/edit/$f['id']" id="new_post">编辑</a></div>
+                        </div>
+                      </a>
+                      
+                    </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div> 
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

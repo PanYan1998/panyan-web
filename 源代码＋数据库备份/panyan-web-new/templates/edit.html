@@ -1,0 +1,22 @@
+$def with(food)
+
+<div class="py-5">
+    <div class="container">
+        <div class="col-9">
+            <form id="c_form-h" class="" action="" method="post" enctype="multipart/form-data">
+            <div class="col-md-6"><img class="img-fluid d-block" src="$food['picture']"></div><p></p>
+            <input id="foodpic" type="file" name="foodpic" accept="image/*" /><p></p>
+            <div class="form-group row"> <label for="inputmailh" class="col-2 col-form-label">名称</label>
+              <div class="col-6">
+                <input type="text" class="form-control" id="inputmailh" value="$food['name']" name="name"> </div>
+            </div>
+            <div class="form-group row"><label class="col-2">简介</label>
+                <div class="col-10">
+                    <textarea class="form-control" id="exampleTextarea" rows="3" name="description">$food['description']</textarea>
+                </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+
+    </div>
+</div>

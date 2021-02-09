@@ -1,0 +1,92 @@
+$def with (bulletin, page_foods, page_count, page)
+
+$code:
+    grace = 5
+    range = grace * 2
+    start = page - grace if page - grace > 0 else 1
+    end = start + range
+    if end > page_count:
+        end = page_count
+        start = end - range if end - range > 0 else 1
+
+
+<div class="py-5 text-center text-white" style="position: relative; overflow: hidden;"> <video autoplay="" loop="" muted="" plays-inline="" style="position: absolute; right: 0; top: 0; min-width:100%; z-index: -100;">
+      <source src="https://static.pingendo.com/video-placeholder.mp4" type="video/mp4"> </video>
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h1 class="mb-4 display-3">馨园民族食堂</h1>
+          <p class="lead mb-5">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card text-white bg-primary mb-3">
+            <div class="card-header">公告</div>
+            <div class="card-body">
+              $for b in bulletin:
+              <div class="list-group">
+                <div class="d-flex w-100 justify-content-between">
+                  <small>$b['bulletin_time']</small>
+                </div>
+                <p class="mb-1">$b['content']</p>
+
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="">我们的菜品</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4" style="">
+          $for f in page_foods:
+          <div class="card"> <img class="card-img-top" src="$f['picture']" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title">$f['name']</h4>
+              <p class="card-text">$f['description']</p> <a href="/view/$f['id']" class="btn btn-primary">查看详情</a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div id="post_pager">
+          $if start > 1:
+              <a class="page" href="/?page=1">1</a> ...
+          $for i in xrange(start, end+1):
+              $if i == page:
+                  <span class="page">$i</span>
+              $else:
+                  <a class="page" href="/?page=$i">$i</a>
+          $if end < page_count:
+              ... <a class="page" href="/?page=$page_count">$page_count</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,66 @@
+$def with (page_posts, page_count, page)
+
+$code:
+    grace = 5
+    range = grace * 2
+    start = page - grace if page - grace > 0 else 1
+    end = start + range
+    if end > page_count:
+        end = page_count
+        start = end - range if end - range > 0 else 1
+
+
+<div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12"><a class="btn btn-primary" href="/addmessage" id="new_post">＋留言</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          $for p in page_posts:
+          <div class="list-group">
+            <a href="/user/$p['userid']" class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">$p['username']</h5> <small>$p['message_time']</small>
+              </div>
+              <p class="mb-1">$p['content']</p>
+            </a>
+          </div>
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="pagination">
+            <li class="page-item"> <a class="page-link" href="#"> <span>«</span></a> </li>
+            <div id="post_pager">
+              $if start > 1:
+                  <a class="page" href="/?page=1">1</a> ...
+              $for i in xrange(start, end+1):
+                  $if i == page:
+                      <span class="page">$i</span>
+                  $else:
+                      <a class="page" href="/?page=$i">$i</a>
+              $if end < page_count:
+                  ... <a class="page" href="/?page=$page_count">$page_count</a>
+              </div>
+            <li class="page-item"> <a class="page-link" href="#"> <span>»</span></a> </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
